@@ -106,9 +106,11 @@ nav h1 a {
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
   width: 100%;
-  height: 50px;
+  height: 150px; /*added height on the box as to fix the filter options*/
   background-color: #3397DB;
   align-items: center;
+  /***padding: 10px 0; --alternative padding here ****/
+  padding-top: 1rem; /*added top padding to recenter further filter options*/
 }
 .filter-options h2 {
   color: white;
@@ -136,6 +138,9 @@ nav h1 a {
   margin: 0;
   padding: 30px 15px 60px;
   text-align: center;
+  display: flex;   /*lines 141 to 143 added for restaurant list container and items to be flexible and resposive */
+  flex-direction: column;
+  align-items: : center;
 }
 #restaurants-list li {
   background-color: #fff;
@@ -145,15 +150,17 @@ nav h1 a {
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
-  width: 270px;
+  max-width: 480px; /*line 153 5o 154 were added to center restaurant list containers and responsive for different smaller device*/
+  width: 80%;
 }
 #restaurants-list .restaurant-img {
-  background-color: #ccc;
+  background-color: white; /*change background image to white*/
   display: block;
   margin: 0;
   max-width: 100%;
   min-height: 248px;
   min-width: 100%;
+  padding-top: 1rem; /*add top padding on restaurant image*/
 }
 #restaurants-list li h1 {
   color: #f18200;

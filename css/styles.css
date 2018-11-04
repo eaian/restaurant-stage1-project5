@@ -54,7 +54,9 @@ nav{
   width: 100%;
   height: 80px;
   background-color: #252831;
+  display: flex;
   text-align:center;
+  align-items:center;
 }
 nav h1 {
   margin: auto;
@@ -134,31 +136,35 @@ nav h1 a {
 
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
+  flex-wrap: wrap;
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
   padding: 30px 15px 60px;
   text-align: center;
   display: flex;   /*lines 141 to 143 added for restaurant list container and items to be flexible and resposive */
-  flex-direction: column;
-  align-items: : center;
+  flex-direction: row; /*line 146 to 147 assisted further in making the list to be at center and wrap*/
+  justify-content: center;
 }
 #restaurants-list li {
+  flex-wrap: wrap;
+  justify-content: center;
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
   margin: 15px;
   min-height: 380px;
-  padding: 0 30px 25px;
+  padding: 20px 30px 25px;
   text-align: left;
-  max-width: 480px; /*line 153 5o 154 were added to center restaurant list containers and responsive for different smaller device*/
+  max-width: 320px; /*line 153 5o 154 were added to center restaurant list containers and responsive for different smaller device*/
   width: 80%;
 }
 #restaurants-list .restaurant-img {
+  flex-wrap: flex;
   background-color: white; /*change background image to white*/
-  display: block;
+  display: inline block;
   margin: 0;
-  max-width: 100%;
+  max-width: 80%;
   min-height: 248px;
   min-width: 100%;
   padding-top: 1rem; /*add top padding on restaurant image*/
@@ -249,12 +255,14 @@ nav h1 a {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
+  padding: 40px 40px 30px;
   width: 50%;
 
 }
 #reviews-container {
-  padding: 30px 40px 80px;
+  /* line here is also an alternative to keep - padding: 30px 40px 80px;*/
+  display: flex; /*added  line 264 and 265 to make this responsive*/
+  flex-direction: column;
 }
 #reviews-container h2 {
   color: #f58500;
@@ -290,4 +298,60 @@ nav h1 a {
 h1 {     /* line 284 to 287 added to to further align Main Heading*/
   align-items: center;
   padding-top: 1rem;
+}
+
+/* ====================== Responsive Layout on min screen 1070 ====================== */
+@media only screen and (max-width: 600px) {
+  .inside {
+    display: flex;
+    flex-direction: row;
+    width: 100 vw;
+  }
+  .inside header {
+    order: 0;
+    width: 100vw;
+  }
+  header {
+    order: 0;
+  }
+  header #breadcrumb {
+    order: 1;
+    width: 100vw;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+  .inside #map-container {
+    order: 2;
+    top: 130px;
+    position: relative;
+    height: 300px;
+    width: 100vw;
+  }
+  .inside #restaurant-container {
+    order: 3;
+    position: relative;
+    width: 100vw;
+    padding: 140px 5px 0 0;
+    margin: auto;
+    text-align: center;
+  }
+  .inside #reviews-container {
+    width: 100vw;
+    padding: 5px;
+    margin: auto;
+  }
+  .inside #footer {
+    order: 4;
+    width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 10px;
+  }
+  #reviews-list {
+    width: 100vw;
+  }
+  #reviews-container h2 {
+    text-align: center;
+  }
 }

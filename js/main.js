@@ -157,10 +157,10 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
-  const image = document.createElement('img');
 
+  const image = document.createElement('img');
+  image.alt = restaurant.name; /*this line added for aria labels. also added imag-alt on restaurant.json file line 8*/
   image.className = 'restaurant-img';
-  /*image.alt= 'Picture of ${restaurant.name}'; */
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 

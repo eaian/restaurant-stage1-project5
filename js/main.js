@@ -178,6 +178,7 @@ createRestaurantHTML = (restaurant) => {
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
+  more.setAttribute('aria-label', "View details about" + restaurant.name); /*added this line to give more description with the restaurant link in main page for improve accessibility*/
   more.href = DBHelper.urlForRestaurant(restaurant);
   more.tabindex='3'; /**added tabindex for restaurant elements that will proceed after the filters**/
   li.append(more)
@@ -199,7 +200,26 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 
-} 
+}
+/*Added Service Worker below as per the EMEA walkthrough by Muhamed*/
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+  .then((reg) => {
+    //registration worked
+    if(reg.installing) {
+      console.log('Service Worker installing');
+    }else if (reg.waiting) {
+      console.log('Service Worker installed');
+    }else if (reg.active) {
+      console.log('Service Worker active');
+    }
+    console.log('Registration succeeded. Scope is ' + reg.scope);
+  }).catch((error) => {
+    //registration failed
+    console.log('Registration failed with ' + error);
+  });
+}
+
 /* addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
